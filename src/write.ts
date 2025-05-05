@@ -165,7 +165,10 @@ function commentFooter(): string {
 }
 
 export function buildComment(benchName: string, curSuite: Benchmark, prevSuite: Benchmark, config?: Config): string {
-    const { prCommentAbsoluteThreshold, prCommentPercentageThreshold } = config ?? {prCommentAbsoluteThreshold: 200, prCommentPercentageThreshold: 25};
+    const { prCommentAbsoluteThreshold, prCommentPercentageThreshold } = config ?? {
+        prCommentAbsoluteThreshold: 200,
+        prCommentPercentageThreshold: 25,
+    };
     const lines = [
         `## ${benchName}`,
         '',
