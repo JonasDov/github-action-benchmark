@@ -176,6 +176,9 @@ describe.each(['https://github.com', 'https://github.enterprise.corp'])('writeBe
             benchmarkDataDirPath: 'dummy', // Should not affect
             githubToken: undefined,
             autoPush: false,
+            commentOnPullRequest: false,
+            prCommentAbsoluteThreshold: 200,
+            prCommentPercentageThreshold: '25%',
             skipFetchGhPages: false, // Should not affect
             summaryAlways: false,
             commentAlways: false,
@@ -873,6 +876,9 @@ describe.each(['https://github.com', 'https://github.enterprise.corp'])('writeBe
             ghRepository: undefined,
             benchmarkDataDirPath: 'data-dir', // Should not affect
             githubToken: 'dummy token',
+            prCommentAbsoluteThreshold: 200,
+            prCommentPercentageThreshold: 25,
+            commentOnPullRequest: false,
             autoPush: true,
             skipFetchGhPages: false, // Should not affect
             commentAlways: false,
