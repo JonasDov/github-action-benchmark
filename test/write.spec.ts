@@ -178,7 +178,7 @@ describe.each(['https://github.com', 'https://github.enterprise.corp'])('writeBe
             autoPush: false,
             commentOnPullRequest: false,
             prCommentAbsoluteThreshold: 200,
-            prCommentPercentageThreshold: '25%',
+            prCommentPercentageThreshold: 25,
             skipFetchGhPages: false, // Should not affect
             summaryAlways: false,
             commentAlways: false,
