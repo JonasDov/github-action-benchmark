@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { promises as fs } from 'fs';
 import * as github from '@actions/github';
@@ -575,7 +576,7 @@ function extractCatch2Result(output: string): BenchmarkResult[] {
     return ret;
 }
 
-function extractJuliaBenchmarkHelper([_, bench]: JuliaBenchmarkGroup, labels: string[] = []): BenchmarkResult[] {
+function extractJuliaBenchmarkHelper([, bench]: JuliaBenchmarkGroup, labels: string[] = []): BenchmarkResult[] {
     const res: BenchmarkResult[] = [];
     for (const key in bench.data) {
         const value = bench.data[key];
