@@ -141,7 +141,7 @@ function floatStr(n: number) {
         return n.toFixed(0);
     }
 
-    return n.toFixed(3);
+    return n.toFixed(2);
 }
 
 function strVal(b: BenchmarkResult): string {
