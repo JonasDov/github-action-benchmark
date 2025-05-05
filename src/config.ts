@@ -15,8 +15,8 @@ export interface Config {
     autoPush: boolean;
     skipFetchGhPages: boolean;
     commentOnPullRequest: boolean;
-    prCommentPercentageThreshold: number | null;
-    prCommentAbsoluteThreshold: number | null;
+    prCommentPercentageThreshold: number;
+    prCommentAbsoluteThreshold: number;
     commentAlways: boolean;
     summaryAlways: boolean;
     saveDataFile: boolean;
@@ -248,13 +248,13 @@ export async function configFromJobInput(): Promise<Config> {
     let failThreshold = getPercentageInput('fail-threshold');
 
     if (prCommentPercentageThreshold === null) {
-        prCommentPercentageThreshold = 25;
+        prCommentPercentageThreshold = 10;
     } else {
         // This is needed since getPercentageInput returns percentage as decimal number
         prCommentPercentageThreshold = prCommentPercentageThreshold * 100;
     }
     if (prCommentAbsoluteThreshold === null) {
-        prCommentAbsoluteThreshold = 200;
+        prCommentAbsoluteThreshold = 50;
     }
     validateToolType(tool);
     outputFilePath = await validateOutputFilePath(outputFilePath);

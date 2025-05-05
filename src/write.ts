@@ -163,39 +163,24 @@ function commentFooter(): string {
 function getIcon(
     difference: number,
     deviation: number,
-    percentageThreshold: number | null,
-    absoluteThreshold: number | null,
+    percentageThreshold: number,
+    absoluteThreshold: number,
 ): '✅' | '🟰' | '🚨' | '〰️' {
     if (difference === 0) {
         return '🟰';
     }
-    if (percentageThreshold === null && absoluteThreshold === null) {
-        if (deviation > 0) {
-            return '🚨';
-        }
+    if (deviation > percentageThreshold && difference > absoluteThreshold) {
+        return '🚨';
+    } else if (deviation * -1 > percentageThreshold && difference * -1 > absoluteThreshold) {
         return '✅';
-    }
-    if (percentageThreshold !== null) {
-        if (deviation > percentageThreshold) {
-            return '🚨';
-        } else if (deviation * -1 > percentageThreshold) {
-            return '✅';
-        }
-    }
-    if (absoluteThreshold !== null) {
-        if (difference > absoluteThreshold) {
-            return '🚨';
-        } else if (difference * -1 > absoluteThreshold) {
-            return '✅';
-        }
     }
     return '〰️';
 }
 
 export function buildComment(benchName: string, curSuite: Benchmark, prevSuite: Benchmark, config?: Config): string {
     const { prCommentAbsoluteThreshold, prCommentPercentageThreshold } = config ?? {
-        prCommentAbsoluteThreshold: 200,
-        prCommentPercentageThreshold: 25,
+        prCommentAbsoluteThreshold: 50,
+        prCommentPercentageThreshold: 10,
     };
     const lines = [
         `## ${benchName}`,

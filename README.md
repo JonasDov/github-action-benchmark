@@ -544,24 +544,26 @@ If it is set to `true`, this action will leave a comment when on Pull Request.
 #### `pr-comment-percentage-threshold` (Optional)
 
 - Type: String
-- Default: `"25%"`
+- Default: `"10%"`
 
 Percentage value like `"50%"`. This threshold helps determine the PR comment icons. It is a deviation threshold indicating how worse or better the current benchmark result is.
 For example, if we now get `150 ms` and previously got `100 ms`, deviation is `50%`.
 
-If deviation is smaller than provided treshold `〰️` icon is shown.
+If deviation is smaller than provided threshold, the `〰️` icon is shown.
 `comment-on-pull-request` needs to be set to `true` for this to take effect.
+**NOTE** This works together with `pr-comment-absolute-threshold`. Both thresholds must be exceeded to show `🚨` or  `✅` instead of `〰️`.
 
 #### `pr-comment-absolute-threshold` (Optional)
 
 - Type: Number
-- Default: `200`
+- Default: `50`
 
 This threshold helps determine the PR comment icons. It is a absolute changte threshold indicating how worse or better the current benchmark result is.
 For example, if we now get `150 ms` and previously got `100 ms`, absolute change is `50`.
 
-If absolute change is smaller than provided treshold `〰️` icon is shown.
+If absolute change is smaller than provided threshold, the `〰️` icon is shown.
 `comment-on-pull-request` needs to be set to `true` for this to take effect.
+**NOTE** This works together with `pr-comment-percentage-threshold`. Both thresholds must be exceeded to show `🚨` or  `✅` instead of `〰️`.
 
 
 ### Action outputs

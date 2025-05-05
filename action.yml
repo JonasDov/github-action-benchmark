@@ -48,11 +48,11 @@ inputs:
   pr-comment-percentage-threshold:
     description: 'Determine PR comment icons based on percentage change threshold. To enable this feature, "github-token" input must be provided and comment-on-pull-request must be set to true'
     required: false
-    default: '25%'
+    default: '10%'
   pr-comment-absolute-threshold:
     description: 'Determine PR comment icons based on absolute change threshold. To enable this feature, "github-token" input must be provided and comment-on-pull-request must be set to true'
     required: false
-    default: 200
+    default: 50
   comment-always:
     description: 'Leave a comment with benchmark result comparison. To enable this feature, github-token input must be given as well'
     required: false
