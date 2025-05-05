@@ -249,6 +249,9 @@ export async function configFromJobInput(): Promise<Config> {
 
     if (prCommentPercentageThreshold === null) {
         prCommentPercentageThreshold = 25;
+    } else {
+        // This is needed since getPercentageInput returns percentage as decimal number
+        prCommentPercentageThreshold = prCommentPercentageThreshold * 100;
     }
     if (prCommentAbsoluteThreshold === null) {
         prCommentAbsoluteThreshold = 200;
