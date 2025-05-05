@@ -596,7 +596,7 @@ async function handleSummary(benchName: string, currBench: Benchmark, prevBench:
         return;
     }
 
-    const body = buildComment(benchName, currBench, prevBench, false);
+    const body = buildComment(benchName, currBench, prevBench, config);
 
     const summary = core.summary.addRaw(body);
 
