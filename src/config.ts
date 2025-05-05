@@ -233,8 +233,8 @@ export async function configFromJobInput(): Promise<Config> {
     const ref: string | undefined = core.getInput('ref') || undefined;
     const autoPush = getBoolInput('auto-push');
     const skipFetchGhPages = getBoolInput('skip-fetch-gh-pages');
-    const prCommentPercentageThreshold = getPercentageInput('pr-comment-percentage-threshold');
-    const prCommentAbsoluteThreshold = getUintInput('pr-comment-absolute-threshold');
+    let prCommentPercentageThreshold = getPercentageInput('pr-comment-percentage-threshold');
+    let prCommentAbsoluteThreshold = getUintInput('pr-comment-absolute-threshold');
     const commentOnPullRequest = getBoolInput('comment-on-pull-request');
     const commentAlways = getBoolInput('comment-always');
     const summaryAlways = getBoolInput('summary-always');
@@ -247,6 +247,12 @@ export async function configFromJobInput(): Promise<Config> {
     const maxItemsInChart = getUintInput('max-items-in-chart');
     let failThreshold = getPercentageInput('fail-threshold');
 
+    if (prCommentPercentageThreshold === null) {
+        prCommentPercentageThreshold = 25;
+    }
+    if (prCommentAbsoluteThreshold === null) {
+        prCommentAbsoluteThreshold = 200;
+    }
     validateToolType(tool);
     outputFilePath = await validateOutputFilePath(outputFilePath);
     validateGhPagesBranch(ghPagesBranch);
